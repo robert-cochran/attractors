@@ -70,9 +70,7 @@ while run:
         x_pos, y_pos = generate_pos(angle, points, p)
 
         # pygame.draw.circle(screen, (0,255,255) , (x_pos, y_pos), 3)
-        # if previous is None:
-        #     print("TRUEEE!")
-        # if previous is not None:
+
         if tally > 1:
             pygame.draw.line(screen, (200,255,255), (x_pos, y_pos), previous, 1) #(hsv2rgb(hue, 1, 1))
         previous = (x_pos, y_pos)
