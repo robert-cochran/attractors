@@ -3,7 +3,7 @@ import os
 from matrix import *
 import math
 import colorsys
-from attractor import Attractor, ODE
+from attractor import Attractor 
 from rotation import Rotation
 from icecream import ic
 
@@ -22,16 +22,14 @@ screen.fill(black)
 clock.tick(fps)
 time = 0.009 #0.009
 
-ode = ODE.lorenz
+
 sigma = 10
 rho = 28
 beta = 8/3
-x1, y1, z1 = 0.4, 0, 0
-points1 = []
-x2, y2, z2 = 10, 0.2, 50
-points2 = []
+x, y, z = 0.4, 0, 0
+points = []
 colors = []
-scale = 15
+scale = 10
 angle = -100
 previous = None
 run = True
@@ -56,30 +54,30 @@ def generate_pos(angle, points, p):
 
 
 
-a1 = Attractor(x1, y1, z1, beta, rho, sigma, time, ode)
+previous = (723,451)
+
 
 while run:
     screen.fill(black)
-    tally = 0
-    points1 = a1.next()
 
+    # tally = 0
+    x, y, z = Attractor.lorenz(x, y, z, beta, rho, sigma, time)
+    point = [[x], [y], [z]]
+    points.append(point)
+    # for p in range(int(len(points)/8),len(points)):
+    for p in range(len(points)):
+        x_pos, y_pos = generate_pos(angle, points, p)
 
-    # for p in range(int(len(points1)/8),len(points1)):
-    for p in range(len(points1)):
-        x_pos1, y_pos1 = generate_pos(angle, points1, p)
-        # x_pos2, y_pos2 = generate_pos(angle, points2, p)
+        
 
-        if p > 0:
-            pygame.draw.line(screen, (255,255,255), (x_pos1, y_pos1), previous1, 1) #(hsv2rgb(hue, 1, 1))
-            # pygame.draw.line(screen, (255,140,0), (x_pos2, y_pos2), previous2, 1) #(hsv2rgb(hue, 1, 1))
-
-            # pygame.draw.circle(screen, (0,255,255) , (x_pos1, y_pos1), 3)
-        previous1 = (x_pos1, y_pos1)
-        # previous2 = (x_pos2, y_pos2)
-        tally +=1
-
-    angle += 0.00001
+        # if tally > 1:
+        pygame.draw.line(screen, (255,255,255), (x_pos, y_pos), previous, 1) #(hsv2rgb(hue, 1, 1))
+            # pygame.draw.circle(screen, (0,255,255) , (x_pos, y_pos), 3)
+        previous = (x_pos, y_pos)
+        # tally +=1
+    angle += 0.0001
     pygame.display.update()
+    # print(previous)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
