@@ -6,7 +6,6 @@ import os
 # from atr_math
 from attractor import Attractor, ODE, generate_attractors
 from camera import Rotation, generate_pos, matrix_multiplication
-import atr_color
 from icecream import ic
 import random
 
@@ -20,23 +19,24 @@ pygame.init()
 pygame.display.set_caption("Lorenz Attractor")
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
-fps = 100
+fps = 200
 screen.fill(black)
 clock.tick(fps)
-time = 0.01 #0.009
+time = 0.0000000000001 #0.009
 
-ode = ODE.lorenz
+ode = ODE.tom
 sigma = 10 #10
 rho = 28 #28
 beta = 8/3 #8/3
-scale = 10
+scale = 100
 angle = 0#-100
 previous = None
 run = True
-attractor_length_limit = 3 #lowest is 2 as it needs the previous value to calculate
-number_of_attractors = 1000
+attractor_length_limit = 4 #lowest is 2 as it needs the previous value to calculate
+number_of_attractors = 500
 
-parameters = [beta, rho, sigma]
+# parameters = [beta, rho, sigma]
+parameters = [0.1998]
 attractors = generate_attractors(number_of_attractors, parameters, time, ode)
 
 
@@ -44,8 +44,7 @@ attractors = generate_attractors(number_of_attractors, parameters, time, ode)
 
 while run:
     screen.fill(black)
-    # r = pygame.Rect(0,0,700,700)
-    # pygame.draw.rect(screen, (100,100,100), r, 4)
+
     for attractor in attractors:
         if len(attractor.points) == attractor_length_limit:
             attractor.points.pop(0)
@@ -54,14 +53,18 @@ while run:
             x_pos, y_pos = generate_pos(angle, attractor.points, p, scale, size)
             # if attractor.previous is not None: # include this line instead of p>0 to view closed attractors "self drawing"
             if p>0:
-                # color = atr_color.new(attractor.color)
-                # pygame.draw.line(screen, color, (x_pos, y_pos), attractor.previous, 1) #white
-                # pygame.draw.circle(screen, color, (x_pos, y_pos), 2)
-                pygame.draw.circle(screen, (attractor.color[0], attractor.color[1], attractor.color[2]), (x_pos, y_pos), 1)
-                pygame.draw.line(screen, (attractor.color[0], attractor.color[1], attractor.color[2]), (x_pos, y_pos), attractor.previous, 2) #white
+                color = ( 
+                            attractor.color[0], 
+                            (attractor.color[1]-random.random()*255)%255, 
+                            (attractor.color[2]-random.random()*255)%255
+                            # attractor.color[2] 
+                        )
+                pygame.draw.line(screen, color, (x_pos, y_pos), attractor.previous, 1) #white
+                pygame.draw.circle(screen, color, (x_pos, y_pos), 3)
             attractor.previous=[x_pos, y_pos]
     angle += 0.005
     pygame.display.update()
+    # ic((attractor.color[0]-1)%255)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
