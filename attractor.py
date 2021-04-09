@@ -1,5 +1,6 @@
 class Attractor:
-    def __init__(self, x, y, z, beta, rho, sigma, time, ode):
+    previous = None
+    def __init__(self, x, y, z, beta, rho, sigma, time, ode, color):
         self.x = x
         self.y = y
         self.z = z
@@ -8,7 +9,15 @@ class Attractor:
         self.sigma = sigma
         self.time = time
         self.ode = ode
-        self.points = [[[x], [y], [z]]]
+        self.points = [
+                        [
+                            [x], 
+                            [y], 
+                            [z]
+                            ]
+                        ]
+        self.color = color
+
     
     # https://en.wikipedia.org/wiki/Lorenz_system
     # def lorenz(x, y, z, beta, rho, sigma, time):
@@ -21,7 +30,7 @@ class Attractor:
         x = p[0][0]
         y = p[1][0]
         z = p[2][0]
-        print(p, x, y, z)
+        # print(p, x, y, z)
         x, y, z = self.ode(self.x, self.y, self.z, self.beta, self.rho, self.sigma, self.time)
         self.x = x
         self.y = y
