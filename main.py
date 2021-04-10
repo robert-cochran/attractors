@@ -1,66 +1,47 @@
 import pygame
 import os
-# from matrix import *
-# import math
-# import colorsys
-# from atr_math
 from attractor import Attractor, ODE, generate_attractors
 from camera import Rotation, generate_pos, matrix_multiplication
-import atr_color
+# from atr_colour import colour_gen
 from icecream import ic
 import random
+import config
+from setup import setup
 
-#--- Constants ------
+# To Do
+## Have a bunch of configs i can quickly enter in and cycle through
+###### Check how to make rotation.y rotate in place instead of in a large circle 
+### Add in changing colours
+### Add in options to add circles drawn
+### Allow for specified number of central points (atm its just one where all atr's emerge, allow for more)
+### Option for selfdrawing (doesnt seem to do it with Lorrenz_Conf, but it does do it with Long_Attractors)
+    ### need to figure out why selfdrawing occurs
+### Afterimage effect (https://www.youtube.com/watch?v=idpOunnpKTo / https://github.com/xMissingno/Coding-Projects)
+### Test Opacitity (Alpha)
 
-os.environ["SDL_VIDEO_CENTERED"]='1'
-width, height = 1440, 900 
-size = (width, height)
-white, black = (200, 200, 200), (0, 0, 0)
-pygame.init()
-pygame.display.set_caption("Lorenz Attractor")
-screen = pygame.display.set_mode(size)
-clock = pygame.time.Clock()
-fps = 100
-screen.fill(black)
-clock.tick(fps)
-time = 0.01 #0.009
 
-ode = ODE.lorenz
-sigma = 10 #10
-rho = 28 #28
-beta = 8/3 #8/3
-scale = 10
-angle = 0#-100
-previous = None
+conf = config.Base_Tom
+screen = setup(conf)
+attractors = generate_attractors(conf.NUMBER_OF_ATTRACTORS, conf.ODE_PARAMETERS, conf.TIME, conf.ODE, conf.DISTANCE, conf.COLOUR_PALETTE)
 run = True
-attractor_length_limit = 3 #lowest is 2 as it needs the previous value to calculate
-number_of_attractors = 1000
-
-parameters = [beta, rho, sigma]
-attractors = generate_attractors(number_of_attractors, parameters, time, ode)
-
-
-
 
 while run:
-    screen.fill(black)
-    # r = pygame.Rect(0,0,700,700)
-    # pygame.draw.rect(screen, (100,100,100), r, 4)
+    screen.fill(conf.BACKGROUND)
     for attractor in attractors:
-        if len(attractor.points) == attractor_length_limit:
+        if len(attractor.points) == conf.ATTRACTOR_LENGTH_LIMIT:
             attractor.points.pop(0)
         attractor.next()
         for p in range(len(attractor.points)):
-            x_pos, y_pos = generate_pos(angle, attractor.points, p, scale, size)
+            x_pos, y_pos = generate_pos(conf.ANGLE, attractor.points, p, conf.SCALE, conf.SIZE)
             # if attractor.previous is not None: # include this line instead of p>0 to view closed attractors "self drawing"
             if p>0:
                 # color = atr_color.new(attractor.color)
                 # pygame.draw.line(screen, color, (x_pos, y_pos), attractor.previous, 1) #white
                 # pygame.draw.circle(screen, color, (x_pos, y_pos), 2)
-                pygame.draw.circle(screen, (attractor.color[0], attractor.color[1], attractor.color[2]), (x_pos, y_pos), 1)
-                pygame.draw.line(screen, (attractor.color[0], attractor.color[1], attractor.color[2]), (x_pos, y_pos), attractor.previous, 2) #white
+                # pygame.draw.circle(screen, (attractor.colour[0], attractor.colour[1], attractor.colour[2]), (x_pos, y_pos), 1)
+                pygame.draw.line(screen, (attractor.colour[0], attractor.colour[1], attractor.colour[2], 255), (x_pos, y_pos), attractor.previous, conf.ATTRACTOR_WIDTH)
             attractor.previous=[x_pos, y_pos]
-    angle += 0.005
+    conf.ANGLE += 0.005
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
