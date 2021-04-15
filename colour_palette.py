@@ -59,37 +59,37 @@ class Static_White:
     B_ADD = 255
     ALPHA = 255
 
+# Will be used for changing colours later
+# def blue_purple(color):
+#     color = ( 
+#             random.random()*255,
+#             random.random()*255,
+#             color[1]
+#         )
+#     return color
 
-def blue_purple(color):
-    color = ( 
-            random.random()*255,
-            random.random()*255,
-            color[1]
-        )
-    return color
+# def blue_white(color):
+#     color = ( 
+#             random.random()*255,
+#             color[1],
+#             color[2],
+#         )
+#     return color
 
-def blue_white(color):
-    color = ( 
-            random.random()*255,
-            color[1],
-            color[2],
-        )
-    return color
+# def yellow(color):
+#     color = ( 
+#             color[0],
+#             color[1],
+#             random.random()*255,
+#         )
+#     return color
 
-def yellow(color):
-    color = ( 
-            color[0],
-            color[1],
-            random.random()*255,
-        )
-    return color
-
-def new(color):
-    color = ( 
-            color[0],
-            random.random()*255,
-            random.random()*255,
-        )
-    return color
+# def new(color):
+#     color = ( 
+#             color[0],
+#             random.random()*255,
+#             random.random()*255,
+#         )
+#     return color
 
 
