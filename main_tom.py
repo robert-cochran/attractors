@@ -6,6 +6,7 @@ import os
 # from atr_math
 from attractor import Attractor, ODE, generate_attractors
 from camera import Rotation, generate_pos, matrix_multiplication
+import atr_color
 from icecream import ic
 import random
 
@@ -16,7 +17,7 @@ width, height = 1440, 900
 size = (width, height)
 white, black = (200, 200, 200), (0, 0, 0)
 pygame.init()
-pygame.display.set_caption("Lorenz Attractor")
+pygame.display.set_caption("Thomas Attractor")
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 200
@@ -32,8 +33,8 @@ scale = 100
 angle = 0#-100
 previous = None
 run = True
-attractor_length_limit = 4 #lowest is 2 as it needs the previous value to calculate
-number_of_attractors = 500
+attractor_length_limit = 2 #lowest is 2 as it needs the previous value to calculate
+number_of_attractors = 1000
 
 # parameters = [beta, rho, sigma]
 parameters = [0.1998]
@@ -53,14 +54,9 @@ while run:
             x_pos, y_pos = generate_pos(angle, attractor.points, p, scale, size)
             # if attractor.previous is not None: # include this line instead of p>0 to view closed attractors "self drawing"
             if p>0:
-                color = ( 
-                            attractor.color[0], 
-                            (attractor.color[1]-random.random()*255)%255, 
-                            (attractor.color[2]-random.random()*255)%255
-                            # attractor.color[2] 
-                        )
-                pygame.draw.line(screen, color, (x_pos, y_pos), attractor.previous, 1) #white
-                pygame.draw.circle(screen, color, (x_pos, y_pos), 3)
+                color = atr_color.blue_purple(attractor.color)
+                pygame.draw.line(screen, color, (x_pos, y_pos), attractor.previous, 1) 
+                pygame.draw.circle(screen, (attractor.color[0], attractor.color[1], attractor.color[2]), (x_pos, y_pos), 2)
             attractor.previous=[x_pos, y_pos]
     angle += 0.005
     pygame.display.update()

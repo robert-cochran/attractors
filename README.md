@@ -2,6 +2,10 @@
 
 Using the PyGame library to visualise attractors in chaotic systems
 
+
+![lorrenz gif](./lorrenz.gif)
+
+
 ##### Related Repo's
 - https://github.com/BrutPitt/glChAoS.P
 - https://github.com/cimi/many-worlds
