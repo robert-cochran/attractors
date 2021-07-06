@@ -3,7 +3,7 @@
 Using the PyGame library to visualise attractors in chaotic systems
 
 
-![lorrenz gif](./lorrenz.gif)
+![lorrenz gif](./strange-attractors/lorrenz.gif)
 
 
 ##### Related Repo's
