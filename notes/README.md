@@ -66,19 +66,26 @@
   - [Fiegenbaum Constans](https://en.wikipedia.org/wiki/Feigenbaum_constants)
 - [Logistic Map](https://en.wikipedia.org/wiki/Logistic_map)
 - [Kolmogorov–Arnold–Moser theorem](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold%E2%80%93Moser_theorem)
+- Complexity and information: Measuring emergence, self-organization, and homeostasis at multiple scales (formalization of core terms) https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.21424
+- 
 
 # Chaos
 - [List of Chaotic Maps](https://en.wikipedia.org/wiki/List_of_chaotic_maps)
+- Complexity, Chaos and Emergence https://onlinelibrary.wiley.com/doi/abs/10.1002/9781444305722.ch5
 
 # Emergence
 - 22. Emergence and Complexity: https://www.youtube.com/watch?v=o_ZuWbX-CyE
 - Self-organising textures from cellular automata : https://news.ycombinator.com/item?id=26112959
   - Chemical Basis of Morphogenisis : https://www.dna.caltech.edu/courses/cs191/paperscs191/turing.pdf
 - From Simple to Complex and Ultra-complex Systems: A Paradigm Shift Towards Non-Abelian Systems Dynamics : http://cogprints.org/7757/1/BaianuPoli50Nu18.pdf
+- Mathematical Theory of Strong Emergence https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20029
+- An information-theoretic primer on complexity, self-organization, and emergence https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.20249
+
 
 ## Biological Emergence
 - ORGANISMIC SUPERCATEGORIES:II. ON MULTISTABLE SYSTEMS : http://cogprints.org/7752/3/OSIImultist1970.pdf
 - On a relational theory of biological systems: a natural model for complex biological behavior: https://arxiv.org/pdf/1705.10394.pdf
+- Self-organization and Natural Complexity https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119681458.ch2
 
 ## Mathematical descriptions of emergence:
   - [ ] The Mathematics of Emergence∗ : http://www.cs.utah.edu/~tch/CS5300/resources/refs/Cucker2006.pdf
