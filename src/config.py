@@ -27,31 +27,33 @@ class Base_Lorrenz(Base_Conf):
     ODE_PARAMETERS = [BETA, RHO, SIGMA]
     SCALE = 10
     ANGLE = 0 #-100
-    ATTRACTOR_LENGTH_LIMIT = 10000 #lowest is 2 as it needs the previous value to calculate
+    ATTRACTOR_LENGTH_LIMIT = 10000 # min 2 (needs prev value to calc)
     NUMBER_OF_ATTRACTORS = 1
     ATTRACTOR_WIDTH = 4
-    DISTANCE = 1 # changing distance moves how far apart or close together the x,y,z points start, for tom: 0.00001, for lorrenz: 0.1
+    DISTANCE = 1 # changing distance moves how far apart or close together the
+                 # x,y,z points start, for tom: 0.00001, for lorrenz: 0.1
     DYNAMIC_COLOUR = False # Flag sets whether colours change during runtime
-    # Colour flag where colour changes by distance travelled, can also have the distance travelled move other props like alpha value
-        # this could show you visually how when all start at the same point with the same colour the change that occurs 
+    # Colour flag where colour changes by distance travelled, can also have the
+    # distance travelled move other props like alpha value
+    # this could show you visually how when all start at the same point with 
+    # the same colour the change that occurs 
     COLOUR_PALETTE = colour_palette.Static_White
-# c = 1
-# [[math.cos(angle)/c, 0, math.sin(angle)/c],
-# [0, 1, 0],
-# [-math.sin(angle)/c, 0, math.cos(angle)/c]]
+    # c = 1
+    # [[math.cos(angle)/c, 0, math.sin(angle)/c],
+    # [0, 1, 0],
+    # [-math.sin(angle)/c, 0, math.cos(angle)/c]]
 
 
 
 class Many_Rainbow_Lorrenz(Base_Lorrenz):
-    ATTRACTOR_LENGTH_LIMIT = 3 #lowest is 2 as it needs the previous value to calculate
+    ATTRACTOR_LENGTH_LIMIT = 3 # min 2
     NUMBER_OF_ATTRACTORS = 1000
     ATTRACTOR_WIDTH = 1
     COLOUR_PALETTE = colour_palette.Rainbow
 
 
-
 class Long_Lorrenz(Base_Lorrenz):
-    ATTRACTOR_LENGTH_LIMIT = 100 #lowest is 2 as it needs the previous value to calculate
+    ATTRACTOR_LENGTH_LIMIT = 100 # min 2
     NUMBER_OF_ATTRACTORS = 20
 class Long_Blue_Lorrenz(Long_Lorrenz):
     COLOUR_PALETTE = colour_palette.Static_Blue
@@ -73,16 +75,16 @@ class Base_Tom(Base_Conf):
     ODE = ODE.tom
     SCALE = 100
     ANGLE = 0 #-100
-    ATTRACTOR_LENGTH_LIMIT = 20 #lowest is 2 as it needs the previous value to calculate
+    ATTRACTOR_LENGTH_LIMIT = 20 
     NUMBER_OF_ATTRACTORS = 100
     ODE_PARAMETERS = [0.1998]
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.05
     COLOUR_PALETTE = colour_palette.Static_White
-# c = 1
-# [[math.cos(angle)/c, 0, math.sin(angle)/c],
-# [0, 1, 0],
-# [-math.sin(angle)/c, 0, math.cos(angle)/c]]
+    # c = 1
+    # [[math.cos(angle)/c, 0, math.sin(angle)/c],
+    # [0, 1, 0],
+    # [-math.sin(angle)/c, 0, math.cos(angle)/c]]
 
 
 class Fast_Tom(Base_Tom):
@@ -98,7 +100,7 @@ class Base_Aizawa(Base_Conf):
     ODE = ODE.aizawa
     SCALE = 200
     ANGLE = 0 #-100
-    ATTRACTOR_LENGTH_LIMIT = 200 #lowest is 2 as it needs the previous value to calculate
+    ATTRACTOR_LENGTH_LIMIT = 200 
     NUMBER_OF_ATTRACTORS = 10
     ALPHA = 0.95
     BETA = 0.7
@@ -121,7 +123,7 @@ class Base_Bouali(Base_Conf):
     ODE = ODE.bouali
     SCALE = 250
     ANGLE = 100
-    ATTRACTOR_LENGTH_LIMIT = 2 #lowest is 2 as it needs the previous value to calculate
+    ATTRACTOR_LENGTH_LIMIT = 2 
     NUMBER_OF_ATTRACTORS = 1000
     ALPHA = 0.95
     BETA = 0.7
