@@ -5,6 +5,7 @@ TODO
 - remove /notes/
 - WASM
 - import wasm into index.html
+- refactor to MVC
 
 - Have a bunch of configs i can quickly enter in and cycle through
     -  Check how to make rotation.y rotate in place instead of in a large circle 
