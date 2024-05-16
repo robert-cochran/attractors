@@ -59,7 +59,9 @@ class Static_White:
     B_ADD = 255
     ALPHA = 255
 
-# Will be used for changing colours later
+# Will be used for changing colours later. 
+# These functions can generate a set of colours around some hue
+
 # def blue_purple(color):
 #     color = ( 
 #             random.random()*255,
@@ -84,12 +86,12 @@ class Static_White:
 #         )
 #     return color
 
-# def new(color):
-#     color = ( 
-#             color[0],
-#             random.random()*255,
-#             random.random()*255,
-#         )
-#     return color
+#def new(color):
+#    color = ( 
+#            color[0],
+#            random.random()*255,
+#            random.random()*255,
+#        )
+#    return color
 
 
