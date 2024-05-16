@@ -8,20 +8,6 @@ import random
 import config
 from setup import setup
 
-# To Do
-## Have a bunch of configs i can quickly enter in and cycle through
-###### Check how to make rotation.y rotate in place instead of in a large circle 
-### Add in changing colours
-### Add in options to add circles drawn
-    ### maybe add circles only at beginning of line?
-### Allow for specified number of central points (atm its just one where all atr's emerge, allow for more)
-### Option for selfdrawing (doesnt seem to do it with Lorrenz_Conf, but it does do it with Long_Attractors)
-    ### need to figure out why selfdrawing occurs
-### Afterimage effect (https://www.youtube.com/watch?v=idpOunnpKTo / https://github.com/xMissingno/Coding-Projects)
-### Test Opacitity (Alpha)
-### Will C++ impl allow for much greater atr number?
-### Format with Black Linter
-
 
 def make_video(screen):
 
