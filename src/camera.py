@@ -1,5 +1,5 @@
 import math
-from atr_math import matrix_multiplication
+from matrix import matrix_multiplication
 
 def generate_pos(angle, points, p, scale, size, rotation_type):
     width = size[0]
