@@ -6,7 +6,7 @@ Using the PyGame library to visualise attractors in chaotic systems
 
 ## Run Instructions
 
-```python3
+```bash
 # uses 'venv' module to create a venv in the venv dir. pip's also copied in.
 python3 -m venv venv
 
@@ -27,6 +27,14 @@ deactive
 ```
 
 NOTE: for auto-managed venv use pipx (installable through brew)
+
+## WASM Compile
+
+```bash
+pip install py2wasm
+py2wasm myprogram.py -o myprogram.wasm
+wasmer run myprogram.wasm
+```
 
 
 ##### Related Repo's
