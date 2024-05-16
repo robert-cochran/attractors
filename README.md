@@ -4,9 +4,8 @@ Using the PyGame library to visualise attractors in chaotic systems
 
 ![lorrenz gif](./strange-attractors/lorrenz.gif)
 
-## How To Run
+## Run Instructions
 
-### venv
 ```python3
 # uses 'venv' module to create a venv in the venv dir. pip's also copied in.
 python3 -m venv venv
@@ -18,18 +17,17 @@ source venv/bin/activate
 # modules listed in requirements.txt install to venv
 pip --require-virtualenv install --requirement requirements.txt
 
+# to manually install a new module later
+pip --require-virtualenv install <module_name>
+
 python3 src/main.py
 
 # deactivates venv and resets PATH back. this (should) work anywhere
 deactive
 ```
 
-### pipx
-for auto-managed venv use pipx (installable through brew)
+NOTE: for auto-managed venv use pipx (installable through brew)
 
-
-python3 main.py 
-python3 main_working.py
 
 ##### Related Repo's
 - https://github.com/BrutPitt/glChAoS.P
