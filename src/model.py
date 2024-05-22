@@ -61,9 +61,9 @@ if __name__ == "__main__":
     print("ode_parameter_sigma:" + str(attractor0.ode_parameters[2]))
     print("time_step:" + str(attractor0.time_step))
     print("ode_name:" + attractor0.ode.__name__)
-    print("colour_sets[0].red:" + str(Model.colour_sets[0]["red"]))
-    print("colour_sets[0].green:" + str(Model.colour_sets[0]["green"]))
-    print("colour_sets[0].blue:" + str(Model.colour_sets[0]["blue"]))
+    print("colour_sets[0].red:" + str(model.colour_sets[0]["red"]))
+    print("colour_sets[0].green:" + str(model.colour_sets[0]["green"]))
+    print("colour_sets[0].blue:" + str(model.colour_sets[0]["blue"]))
 
     
     print("-----attractor0 initial coords-----")
