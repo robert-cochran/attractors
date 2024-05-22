@@ -1,8 +1,16 @@
 # Attractors
 
-Using the PyGame library to visualise attractors in chaotic systems
+Using the PyGame library to visualise strange attractors.
 
 ![lorrenz gif](./lorrenz.gif)
+
+For more info and examples see:
+- https://en.wikipedia.org/wiki/Attractor
+- https://en.wikipedia.org/wiki/Lorenz_system
+- https://www.behance.net/gallery/7618879/Strange-Attractors
+- http://www.3d-meier.de/tut19/Seite3.html
+- http://paulbourke.net/fractals/sprott/
+- https://examples.pyviz.org/attractors/attractors.html
 
 ## Run Instructions
 
