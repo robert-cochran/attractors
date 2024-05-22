@@ -1,6 +1,6 @@
 import os
 import pygame
-import config
+import config_view
 
 
 def setup(config):

@@ -1,25 +1,19 @@
 import os
-import pygame
-from attractor import ODE
-import colour_palette
+#import pygame
+from ode import ODE
+import colour_scheme
 import camera
 
 
-
-class Base_Conf:
-    WIDTH, HEIGHT = 1440,900 #QHD2560,1440 #MAC1440,900
-    SIZE = (WIDTH, HEIGHT)
-    WHITE, BLACK = (200, 200, 200), (0, 0, 0)
-    FPS = 100
-    BACKGROUND = BLACK
-    ROTATION_TYPE = camera.Rotation.y
+# TODO - rename to view conf and move it to view section
+# separate the other view and mODE. related configs too
+# TODO REMOVE
 
 ######################################
 ## Atttractor 1 - Lorrenz Attractor ##
 ######################################
-class Base_Lorrenz(Base_Conf):
-    SET_CAPTION = "Lorenz Attractor"
-    TIME = 0.01 #0.009
+class Base_Lorrenz():
+    TIME_STEP = 0.01 #0.009
     ODE = ODE.lorenz
     BETA = 8/3 #8/3
     RHO = 28 #28
@@ -37,11 +31,12 @@ class Base_Lorrenz(Base_Conf):
     # distance travelled move other props like alpha value
     # this could show you visually how when all start at the same point with 
     # the same colour the change that occurs 
-    COLOUR_PALETTE = colour_palette.Static_White
+    COLOUR_SCHEME = colour_scheme.Static_White
     # c = 1
     # [[math.cos(angle)/c, 0, math.sin(angle)/c],
     # [0, 1, 0],
     # [-math.sin(angle)/c, 0, math.cos(angle)/c]]
+    # AFTER_IMAGE
 
 
 
@@ -49,29 +44,32 @@ class Many_Rainbow_Lorrenz(Base_Lorrenz):
     ATTRACTOR_LENGTH_LIMIT = 3 # min 2
     NUMBER_OF_ATTRACTORS = 1000
     ATTRACTOR_WIDTH = 1
-    COLOUR_PALETTE = colour_palette.Rainbow
+    COLOUR_SCHEME = colour_scheme.Rainbow
 
 
 class Long_Lorrenz(Base_Lorrenz):
     ATTRACTOR_LENGTH_LIMIT = 100 # min 2
     NUMBER_OF_ATTRACTORS = 20
+
 class Long_Blue_Lorrenz(Long_Lorrenz):
-    COLOUR_PALETTE = colour_palette.Static_Blue
+    COLOUR_SCHEME = colour_scheme.Static_Blue
+
 class Long_Pink_Lorrenz(Long_Lorrenz):
-    COLOUR_PALETTE = colour_palette.Static_Pink
+    COLOUR_SCHEME = colour_scheme.Static_Pink
+
 class Long_Violet_Blue_Lorrenz(Long_Lorrenz):
-    COLOUR_PALETTE = colour_palette.Static_Violet_Blue
+    COLOUR_SCHEME = colour_scheme.Static_Violet_Blue
 
 class Wide_Distance(Many_Rainbow_Lorrenz):
     DISTANCE = 90
-    TIME = 0.003
+    TIME_STEP = 0.003
 
 ####################################################################
 ## Attractor 2 - Thomas' Cyclically Symmetric Attractor (aka Tom) ##
 ####################################################################
-class Base_Tom(Base_Conf):
+class Base_Tom():
     SET_CAPTION = "Thomas Attractor"
-    TIME = 0.1
+    TIME_STEP = 0.1
     ODE = ODE.tom
     SCALE = 100
     ANGLE = 0 #-100
@@ -80,7 +78,7 @@ class Base_Tom(Base_Conf):
     ODE_PARAMETERS = [0.1998]
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.05
-    COLOUR_PALETTE = colour_palette.Static_White
+    COLOUR_SCHEME = colour_scheme.Static_White
     # c = 1
     # [[math.cos(angle)/c, 0, math.sin(angle)/c],
     # [0, 1, 0],
@@ -88,15 +86,15 @@ class Base_Tom(Base_Conf):
 
 
 class Fast_Tom(Base_Tom):
-    TIME = 0.4
+    TIME_STEP = 0.4
 
 
 ####################################
 ## Attractor 3 - Aizawa Attractor ##
 ####################################
-class Base_Aizawa(Base_Conf):
+class Base_Aizawa():
     SET_CAPTION = "Aizawa Attractor"
-    TIME = 0.05
+    TIME_STEP = 0.05
     ODE = ODE.aizawa
     SCALE = 200
     ANGLE = 0 #-100
@@ -111,15 +109,15 @@ class Base_Aizawa(Base_Conf):
     ODE_PARAMETERS = [ALPHA, BETA, GAMMA, DELTA, EPSILON, ZETA]
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.001
-    COLOUR_PALETTE = colour_palette.Rainbow
+    COLOUR_SCHEME = colour_scheme.Rainbow
 
 
 ####################################
 ## Attractor 4 - Bouali Attractor ##
 ####################################
-class Base_Bouali(Base_Conf):
+class Base_Bouali():
     SET_CAPTION = "Bouali Attractor"
-    TIME = 0.01
+    TIME_STEP = 0.01
     ODE = ODE.bouali
     SCALE = 250
     ANGLE = 100
@@ -134,7 +132,7 @@ class Base_Bouali(Base_Conf):
     ODE_PARAMETERS = [ALPHA, BETA, GAMMA, DELTA, EPSILON, ZETA]
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.5
-    COLOUR_PALETTE = colour_palette.Rainbow
+    COLOUR_SCHEME = colour_scheme.Rainbow
     ROTATION_TYPE=camera.Rotation.none
     # [[-1,0,0],
     # [0,c,0],

@@ -95,3 +95,13 @@ class Static_White:
 #    return color
 
 
+# m determines the range of color while a determines how white they
+# are, for tom increse the constant white levels
+def generate_colour_set(COLOUR_SCHEME):
+    red = int(random.random() * COLOUR_SCHEME.R_MULT) + COLOUR_SCHEME.R_ADD
+    green = int(random.random() * COLOUR_SCHEME.G_MULT) + COLOUR_SCHEME.G_ADD
+    blue = int(random.random() * COLOUR_SCHEME.B_MULT) + COLOUR_SCHEME.B_ADD
+    return { "red":red, "green":green, "blue":blue }
+
+
+

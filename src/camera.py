@@ -1,6 +1,11 @@
 import math
 from matrix import matrix_multiplication
 
+class Camera(object):
+
+    def __init__(self, config_model, config_view):
+        print("TODO")
+
 def generate_pos(angle, points, p, scale, size, rotation_type):
     width = size[0]
     height = size[1]
