@@ -60,6 +60,7 @@ class View(object):
         for event in self.pygame.event.get():
             if event.type == self.pygame.QUIT:
                 return True
+        return False
     
     def quit(self):
         self.pygame.quit
