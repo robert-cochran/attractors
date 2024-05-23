@@ -1,7 +1,5 @@
 from attractor import Attractor, ODE, generate_attractors
-from camera import Rotation, generate_pos, matrix_multiplication
 import colour_scheme
-#import config_model
 
 # TODO - an after image effect using previous generated points that fade out
 # based on how long theyve been around. would tie opacity to time step. but also

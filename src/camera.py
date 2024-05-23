@@ -4,26 +4,31 @@ from matrix import matrix_multiplication
 class Camera(object):
 
     def __init__(self, config_model, config_view):
-        print("TODO")
-
-def generate_pos(angle, points, p, scale, size, rotation_type):
-    width = size[0]
-    height = size[1]
-    rotated_2d = matrix_multiplication(rotation_type(angle), points[p]) 
-    # distance = 1 #0.01
-    # val = 1/(distance - rotated_2d[2][0])#z value
-    projection_matrix = [[1, 0, 0],
-                        [0, 1, 0]]
-    projected2d = matrix_multiplication(projection_matrix, rotated_2d)
-    projected2d = rotated_2d
-    x_pos = int(projected2d[0][0] * scale) + width//2 #+ 100
-    y_pos = int(projected2d[1][0] * scale) + height//2
-    return x_pos, y_pos
+        self.angle = config_model.ANGLE
+        self.scale = config_model.SCALE
+        self.size = config_view.SIZE
+        self.width = config_view.SIZE[0]
+        self.height = config_view.SIZE[1]
+    
+    # translates the coordinates rotaionally around the y axis
+    def translate_around_y_axis(self, coordinates):
+        rotated_2d = matrix_multiplication(Rotation.y(self.angle), coordinates) 
+        # distance = 1 #0.01
+        # val = 1/(distance - rotated_2d[2][0])#z value
+        projection_matrix = [[1, 0, 0],
+                            [0, 1, 0]]
+        projected2d = matrix_multiplication(projection_matrix, rotated_2d)
+        projected2d = rotated_2d # ????
+        x_pos = int(projected2d[0][0] * self.scale) + self.width//2 #+ 100
+        y_pos = int(projected2d[1][0] * self.scale) + self.height//2
+        return x_pos, y_pos
+    
+    def increase_angle(self, step):
+        self.angle += step
 
 # The rotation matrix used to take the x,y,z points and 
 # rotate them through space - further reading:
 # https://en.wikipedia.org/wiki/Rotation_matrix 
-
 class Rotation:
     def x(angle):
         c = 5
@@ -41,6 +46,7 @@ class Rotation:
         return [[math.cos(angle), -math.sin(angle), 0],
                 [math.sin(angle), math.cos(angle), 0 ],
                 [0, 0, 1]]
+
     def none(angle):
         c = 0.1
         return [[-1,0,0],
