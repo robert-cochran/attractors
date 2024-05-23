@@ -22,7 +22,7 @@ class Attractor:
         self.cartesian_coords_matrix = [ [x], [y], [z] ]
         self.cartesian_coords = { "x": x, "y":y, "z":z }
         self.coord_history.append(self.cartesian_coords_matrix)
-        #self.generate_next_coordinates()
+        self.generate_next_coordinate()
         
 
     def generate_next_coordinate(self):
@@ -36,7 +36,6 @@ class Attractor:
         if len(self.coord_history) == self.coord_history_limit:
             # cleaning coord_history massively increases speed
             self.dequeue_coord_history()
-            #attractor.cartesian_coords_matrix.pop(0)
         return self.cartesian_coords_matrix
 
     def dequeue_coord_history(self):

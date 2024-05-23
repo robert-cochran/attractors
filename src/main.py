@@ -28,21 +28,19 @@ if __name__ == "__main__":
         # An Attractor in this instance is a single point in space defined by
         # its cartesian coordinates. Attractors are the set of these points.
         for attractor_index, attractor in enumerate(attractors):
-            attractor.generate_next_coordinate()
-            for coord_index in range(len(attractor.coord_history)):
-                coord_matrix_prv = attractor.get_previous_coord()
-                coord_matrix_cur = attractor.get_coord(coord_index)
-                x_prv, y_prv = camera.translate_around_y_axis(coord_matrix_prv)
-                x_cur, y_cur = camera.translate_around_y_axis(coord_matrix_cur)
-                colour = model.get_colour_dict(attractor_index)
-                view.paint_line(colour["red"],
-                                colour["green"],
-                                colour["blue"],
-                                x_cur,
-                                y_cur,
-                                x_prv,
-                                y_prv,
-                                model.get_width())
+            coord_matrix_prv = attractor.get_current_coord()
+            coord_matrix_cur = attractor.generate_next_coordinate()
+            x_prv, y_prv = camera.translate_around_y_axis(coord_matrix_prv)
+            x_cur, y_cur = camera.translate_around_y_axis(coord_matrix_cur)
+            colour = model.get_colour_dict(attractor_index)
+            view.paint_line(colour["red"],
+                            colour["green"],
+                            colour["blue"],
+                            x_cur,
+                            y_cur,
+                            x_prv,
+                            y_prv,
+                            model.get_width())
         camera.increase_angle(0.005)
         pygame.display.update()
         # ic((attractor.color[0]-1)%255)
