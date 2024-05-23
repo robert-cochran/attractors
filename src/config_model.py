@@ -104,8 +104,8 @@ class Base_Aizawa():
     ODE = ODE.aizawa
     SCALE = 200
     ANGLE = 0 #-100
-    COORDINATE_HISTORY_LIMIT = 200 
-    NUMBER_OF_ATTRACTORS = 10
+    COORDINATE_HISTORY_LIMIT = 3
+    NUMBER_OF_ATTRACTORS = 3000
     ALPHA = 0.95
     BETA = 0.7
     GAMMA = 0.6
@@ -116,6 +116,9 @@ class Base_Aizawa():
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.001
     COLOUR_SCHEME = colour_scheme.Rainbow
+
+# TODO - Camera rotation not quite right, currently induces motion sickness
+# enable TRAIL for this, see if it makes it let vomit inducing
 
 
 ####################################
@@ -137,9 +140,11 @@ class Base_Bouali():
     ZETA = 0.1
     ODE_PARAMETERS = [ALPHA, BETA, GAMMA, DELTA, EPSILON, ZETA]
     ATTRACTOR_WIDTH = 1
-    DISTANCE = 0.5
+    DISTANCE = 0.00005
     COLOUR_SCHEME = colour_scheme.Rainbow
     ROTATION_TYPE=camera.Rotation.none
     # [[-1,0,0],
     # [0,c,0],
     # [0,0,c]]
+
+# TODO - currently broken, immediately hides from camera

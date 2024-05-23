@@ -13,7 +13,8 @@ from setup import setup
 
 conf_view = config_view.Base_Conf
 #conf_model = config_model.Rainbow_Lorenz
-conf_model = config_model.Dense_Tom
+#conf_model = config_model.Dense_Tom
+conf_model = config_model.Base_Bouali
 screen = setup(conf_view)
 model = Model(conf_model)
 attractors = model.attractors
