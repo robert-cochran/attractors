@@ -9,6 +9,7 @@ import random
 class Model:
 
     def __init__(self, config):
+        self.attractor_width = config.ATTRACTOR_WIDTH
         self.number_of_attractors = config.NUMBER_OF_ATTRACTORS
         self.coordinate_history_limit = config.ATTRACTOR_LENGTH_LIMIT
         self.attractors = []
@@ -22,7 +23,8 @@ class Model:
                                   z, \
                                   config.ODE_PARAMETERS, \
                                   config.TIME_STEP, \
-                                  config.ODE)
+                                  config.ODE, \
+                                  self.coordinate_history_limit)
             self.attractors.append(attractor)
             colours = colour_scheme.generate_colour_set(config.COLOUR_SCHEME)
             self.colour_sets.append(colours)
@@ -40,6 +42,14 @@ class Model:
                 colour_set["blue"], 
                 255)
 
+    def get_colour_dict(self, index):
+        colour_set = self.colour_sets[index]
+        return  { "red": colour_set["red"], \
+                  "green": colour_set["green"], \
+                  "blue": colour_set["blue"] }
+
+    def get_width(self):
+        return self.attractor_width
 
 if __name__ == "__main__":
     class Test_Conf:

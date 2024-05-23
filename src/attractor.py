@@ -8,29 +8,46 @@ from ode import ODE
 
 class Attractor:
     previous = None
-    def __init__(self, x, y, z, ode_parameters, time_step, ode):
+    def __init__(self, x, y, z, ode_parameters, time_step, ode, history_limit):
         self.ode_parameters = ode_parameters
         self.time_step = time_step
         self.ode = ode
         #Stores current and all previous coords as list
         # TODO change name to include 'history'
         # TODO update to include list of dict's to make less confusing
-        self.cartesian_coords_matrix = [ [ [x], [y], [z] ] ]
+        self.coord_history = []
+        self.coord_history_limit = history_limit
+        self.cartesian_coords_matrix = [ [x], [y], [z] ]
         self.cartesian_coords = { "x": x, "y":y, "z":z }
+        self.coord_history.append(self.cartesian_coords_matrix)
+        #self.generate_next_coordinates()
         
 
-    def generate_next_coordinates(self):
-        p = self.cartesian_coords_matrix[-1]
-        x = p[0][0]
-        y = p[1][0]
-        z = p[2][0]
+    def generate_next_coordinate(self):
+        x = self.cartesian_coords["x"]
+        y = self.cartesian_coords["y"]
+        z = self.cartesian_coords["z"]
         x, y, z = self.ode(x, y, z, self.ode_parameters, self.time_step)
-        self.cartesian_coords_matrix.append([[x], [y], [z]])
+        self.cartesian_coords_matrix = [ [x], [y], [z] ]
+        self.coord_history.append(self.cartesian_coords_matrix)
         self.cartesian_coords = { "x": x, "y":y, "z":z }
+        if len(self.coord_history) == self.coord_history_limit:
+            # cleaning coord_history massively increases speed
+            self.dequeue_coord_history()
+            #attractor.cartesian_coords_matrix.pop(0)
         return self.cartesian_coords_matrix
 
     def dequeue_coord_history(self):
-        coord_history.pop(0)
+        self.coord_history.pop(0)
+
+    def get_previous_coord(self):
+        return self.coord_history[-2]
+
+    def get_current_coord(self):
+        return self.coord_history[-1]
+
+    def get_coord(self, index):
+        return self.coord_history[index]
 
 
 if __name__ == "__main__":

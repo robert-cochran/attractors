@@ -20,31 +20,26 @@ view = View(conf_view)
 camera = Camera(conf_model, conf_view)
 run_attractor = True
 #save_screen = view.make_video(screen)  # initiate the video generator
-coord_history_limit = model.coordinate_history_limit
 
 if __name__ == "__main__":
     while run_attractor:
         # wipes previous animation, otherwise points stay on screen
         view.clear_screen()
-        # An attractor in this instance is a single point in space defined by
+        # An Attractor in this instance is a single point in space defined by
         # its cartesian coordinates. Attractors are the set of these points.
         for index, attractor in enumerate(attractors):
-            # I think this is limit history kept
-            if len(attractor.cartesian_coords_matrix) == coord_history_limit:
-                # keep no more than coord_history_limit amount of coords 
-                attractor.cartesian_coords_matrix.pop(0)
-                #attractor.cartesian_coords_matrix.pop(0)
-            attractor.generate_next_coordinates()
-            # p is x, y, z points?
-            for p in range(len(attractor.cartesian_coords_matrix)):
-                coords = attractor.cartesian_coords_matrix[p]
+            attractor.generate_next_coordinate()
+            for prev_coord_index in range(len(attractor.coord_history)):
+                coords = attractor.get_coord(prev_coord_index)
                 x_pos, y_pos = camera.translate_around_y_axis(coords)
                 if attractor.previous is not None: 
-                    pygame.draw.line(screen, \
-                                     model.get_colour_set(index), \
-                                     (x_pos, y_pos), \
-                                     attractor.previous, \
-                                     conf_model.ATTRACTOR_WIDTH)
+                    red = model.get_colour_dict(index)["red"]
+                    green = model.get_colour_dict(index)["green"]
+                    blue = model.get_colour_dict(index)["blue"]
+                    x_prev = attractor.previous[0]
+                    y_prev = attractor.previous[1]
+                    view.paint_line(red, green, blue, x_pos, y_pos, x_prev, 
+                                    y_prev, model.get_width())
                 # TODO make this method that sets prev coords (needed?)
                 # TODO rename to previous_coords
                 attractor.previous=[x_pos, y_pos]
