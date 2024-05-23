@@ -1,28 +1,4 @@
-import pygame
-import os
-from camera import Camera
-from model import Model
-from view import View
-from icecream import ic
-import random
-import config_model
-import config_view
-from setup import setup
 
-#TODO check for parameters passed in to load new config, otherwise load default
-
-conf_view = config_view.Base_Conf
-conf_model = config_model.Rainbow_Lorenz
-#conf_model = config_model.Dense_Tom
-screen = setup(conf_view)
-model = Model(conf_model)
-attractors = model.attractors
-view = View(conf_view)
-camera = Camera(conf_model, conf_view)
-run_attractor = True
-#save_screen = view.make_video(screen)  # initiate the video generator
-
-if __name__ == "__main__":
     while run_attractor:
         # wipes previous animation, otherwise points stay on screen
         view.clear_screen()
@@ -52,9 +28,11 @@ if __name__ == "__main__":
                               y_cur,
                               model.get_width()*2)
         camera.increase_angle(0.005)
-        view.update_display()
+        pygame.display.update()
         # ic((attractor.color[0]-1)%255)
-        run_attractor = not view.check_exit_signal()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run_attractor = False
         #next(save_screen) 
-    view.quit()
+    pygame.quit()
 
