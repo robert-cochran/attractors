@@ -12,7 +12,8 @@ from setup import setup
 #TODO check for parameters passed in to load new config, otherwise load default
 
 conf_view = config_view.Base_Conf
-conf_model = config_model.Many_Rainbow_Lorrenz
+conf_model = config_model.Rainbow_Lorenz
+#conf_model = config_model.Base_Lorenz
 screen = setup(conf_view)
 model = Model(conf_model)
 attractors = model.attractors
@@ -44,6 +45,12 @@ if __name__ == "__main__":
                             x_prv,
                             y_prv,
                             model.get_width())
+            view.paint_circle(colour["red"],
+                              colour["green"],
+                              colour["blue"],
+                              x_cur,
+                              y_cur,
+                              model.get_width()*2)
         camera.increase_angle(0.005)
         pygame.display.update()
         # ic((attractor.color[0]-1)%255)

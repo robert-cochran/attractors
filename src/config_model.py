@@ -10,9 +10,9 @@ import camera
 # TODO REMOVE
 
 ######################################
-## Atttractor 1 - Lorrenz Attractor ##
+## Atttractor 1 - Lorenz Attractor ##
 ######################################
-class Base_Lorrenz():
+class Base_Lorenz():
     TIME_STEP = 0.01 #0.009
     ODE = ODE.lorenz
     BETA = 8/3 #8/3
@@ -22,7 +22,7 @@ class Base_Lorrenz():
     SCALE = 10
     ANGLE = 0 #-100
     COORDINATE_HISTORY_LIMIT = 10000 # min 2 (needs prev value to calc)
-    NUMBER_OF_ATTRACTORS = 1
+    NUMBER_OF_ATTRACTORS = 1000
     ATTRACTOR_WIDTH = 4
     DISTANCE = 1 # changing distance moves how far apart or close together the
                  # x,y,z points start, for tom: 0.00001, for lorrenz: 0.1
@@ -40,27 +40,29 @@ class Base_Lorrenz():
 
 
 
-class Many_Rainbow_Lorrenz(Base_Lorrenz):
+class Rainbow_Lorenz(Base_Lorenz):
     COORDINATE_HISTORY_LIMIT = 2 # min 2
-    NUMBER_OF_ATTRACTORS = 4000
+    NUMBER_OF_ATTRACTORS = 2000
     ATTRACTOR_WIDTH = 1
     COLOUR_SCHEME = colour_scheme.Rainbow
 
 
-class Long_Lorrenz(Base_Lorrenz):
+class Long_Lorenz(Base_Lorenz):
     COORDINATE_HISTORY_LIMIT = 100 # min 2
     NUMBER_OF_ATTRACTORS = 20
+    # TODO - implement trail, otherwise this config sucks
+    TRAIL = True
 
-class Long_Blue_Lorrenz(Long_Lorrenz):
+class Long_Blue_Lorenz(Long_Lorenz):
     COLOUR_SCHEME = colour_scheme.Static_Blue
 
-class Long_Pink_Lorrenz(Long_Lorrenz):
+class Long_Pink_Lorenz(Long_Lorenz):
     COLOUR_SCHEME = colour_scheme.Static_Pink
 
-class Long_Violet_Blue_Lorrenz(Long_Lorrenz):
+class Long_Violet_Blue_Lorenz(Long_Lorenz):
     COLOUR_SCHEME = colour_scheme.Static_Violet_Blue
 
-class Wide_Distance(Many_Rainbow_Lorrenz):
+class Close_Up_Pan_Out(Rainbow_Lorenz):
     DISTANCE = 90
     TIME_STEP = 0.003
 
