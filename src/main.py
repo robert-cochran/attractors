@@ -12,8 +12,8 @@ from setup import setup
 #TODO check for parameters passed in to load new config, otherwise load default
 
 conf_view = config_view.Base_Conf
-conf_model = config_model.Rainbow_Lorenz
-#conf_model = config_model.Base_Lorenz
+#conf_model = config_model.Rainbow_Lorenz
+conf_model = config_model.Dense_Tom
 screen = setup(conf_view)
 model = Model(conf_model)
 attractors = model.attractors

@@ -1,3 +1,4 @@
+import math
 
 # Ordinary Differential Equations (not sure they're all Ordinary though)
 # should change to DE (differential equations) instead to be more accurate

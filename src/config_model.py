@@ -23,6 +23,7 @@ class Base_Lorenz():
     ANGLE = 0 #-100
     COORDINATE_HISTORY_LIMIT = 10000 # min 2 (needs prev value to calc)
     NUMBER_OF_ATTRACTORS = 1000
+    # TODO - rename PAINT_WIDTH, probably move to view as well
     ATTRACTOR_WIDTH = 4
     DISTANCE = 1 # changing distance moves how far apart or close together the
                  # x,y,z points start, for tom: 0.00001, for lorrenz: 0.1
@@ -89,6 +90,9 @@ class Base_Tom():
 
 class Fast_Tom(Base_Tom):
     TIME_STEP = 0.4
+
+class Dense_Tom(Base_Tom):
+    NUMBER_OF_ATTRACTORS = 2000
 
 
 ####################################
