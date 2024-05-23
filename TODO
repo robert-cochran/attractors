@@ -1,13 +1,11 @@
 TODO
 
-- merge code, get rid of comments, make it readable
-- refactor to MVC. 
-    - make attractor determinstic that takes a set of points and generates new
-      points. 
-    - make attractor its own module that can be compiled into its own wasm.
-      that way it can be run in browser using js video engine
-    - compile into 3 wasms, model, view, controller. can i bundle 2 wasms
-      (model/view) into another wasm (controller)?
+- make attractor determinstic that takes a set of points and generates new
+  points. 
+- make attractor its own module that can be compiled into its own wasm.
+  that way it can be run in browser using js video engine
+- compile into 3 wasms, model, view, controller. can i bundle 2 wasms
+  (model/view) into another wasm (controller)?
 - have python3 take in attractorName for bash arg, no args sets default attractor
 - remove /notes/
 - WASM -> 33MB compiled
