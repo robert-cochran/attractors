@@ -33,11 +33,13 @@ class Model:
         print("todo")
 
 
-#def generate_attractor(ode_parameters, time_step, ode, distance):
-#    r = random.random
-#    d = distance 
-#    x, y, z = r()*d, r()*d, r()*d
-#    return Attractor(x, y, z, ode_parameters, time_step, ode)
+    def get_colour_set(self, index):
+        colour_set = self.colour_sets[index]
+        return (colour_set["red"], 
+                colour_set["green"], 
+                colour_set["blue"], 
+                255)
+
 
 if __name__ == "__main__":
     class Test_Conf:

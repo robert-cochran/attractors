@@ -19,7 +19,7 @@ class Attractor:
         self.cartesian_coords = { "x": x, "y":y, "z":z }
         
 
-    def next(self):
+    def generate_next_coordinates(self):
         p = self.cartesian_coords_matrix[-1]
         x = p[0][0]
         y = p[1][0]
@@ -29,9 +29,8 @@ class Attractor:
         self.cartesian_coords = { "x": x, "y":y, "z":z }
         return self.cartesian_coords_matrix
 
-    def dequeue_coord_history():
+    def dequeue_coord_history(self):
         coord_history.pop(0)
-
 
 
 if __name__ == "__main__":

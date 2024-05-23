@@ -34,18 +34,14 @@ if __name__ == "__main__":
                 # keep no more than coord_history_limit amount of coords 
                 attractor.cartesian_coords_matrix.pop(0)
                 #attractor.cartesian_coords_matrix.pop(0)
-            attractor.next()
+            attractor.generate_next_coordinates()
             # p is x, y, z points?
             for p in range(len(attractor.cartesian_coords_matrix)):
                 coords = attractor.cartesian_coords_matrix[p]
                 x_pos, y_pos = camera.translate_around_y_axis(coords)
                 if attractor.previous is not None: 
-                    colour = (model.colour_sets[index]["red"], \
-                              model.colour_sets[index]["green"], \
-                              model.colour_sets[index]["blue"], \
-                              255)
                     pygame.draw.line(screen, \
-                                     colour, \
+                                     model.get_colour_set(index), \
                                      (x_pos, y_pos), \
                                      attractor.previous, \
                                      conf_model.ATTRACTOR_WIDTH)
