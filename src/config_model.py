@@ -21,7 +21,7 @@ class Base_Lorrenz():
     ODE_PARAMETERS = [BETA, RHO, SIGMA]
     SCALE = 10
     ANGLE = 0 #-100
-    ATTRACTOR_LENGTH_LIMIT = 10000 # min 2 (needs prev value to calc)
+    COORDINATE_HISTORY_LIMIT = 10000 # min 2 (needs prev value to calc)
     NUMBER_OF_ATTRACTORS = 1
     ATTRACTOR_WIDTH = 4
     DISTANCE = 1 # changing distance moves how far apart or close together the
@@ -41,14 +41,14 @@ class Base_Lorrenz():
 
 
 class Many_Rainbow_Lorrenz(Base_Lorrenz):
-    ATTRACTOR_LENGTH_LIMIT = 3 # min 2
+    COORDINATE_HISTORY_LIMIT = 3 # min 2
     NUMBER_OF_ATTRACTORS = 1000
     ATTRACTOR_WIDTH = 1
     COLOUR_SCHEME = colour_scheme.Rainbow
 
 
 class Long_Lorrenz(Base_Lorrenz):
-    ATTRACTOR_LENGTH_LIMIT = 100 # min 2
+    COORDINATE_HISTORY_LIMIT = 100 # min 2
     NUMBER_OF_ATTRACTORS = 20
 
 class Long_Blue_Lorrenz(Long_Lorrenz):
@@ -73,7 +73,7 @@ class Base_Tom():
     ODE = ODE.tom
     SCALE = 100
     ANGLE = 0 #-100
-    ATTRACTOR_LENGTH_LIMIT = 20 
+    COORDINATE_HISTORY_LIMIT = 20 
     NUMBER_OF_ATTRACTORS = 100
     ODE_PARAMETERS = [0.1998]
     ATTRACTOR_WIDTH = 1
@@ -98,7 +98,7 @@ class Base_Aizawa():
     ODE = ODE.aizawa
     SCALE = 200
     ANGLE = 0 #-100
-    ATTRACTOR_LENGTH_LIMIT = 200 
+    COORDINATE_HISTORY_LIMIT = 200 
     NUMBER_OF_ATTRACTORS = 10
     ALPHA = 0.95
     BETA = 0.7
@@ -121,7 +121,7 @@ class Base_Bouali():
     ODE = ODE.bouali
     SCALE = 250
     ANGLE = 100
-    ATTRACTOR_LENGTH_LIMIT = 2 
+    COORDINATE_HISTORY_LIMIT = 2 
     NUMBER_OF_ATTRACTORS = 1000
     ALPHA = 0.95
     BETA = 0.7

@@ -11,7 +11,7 @@ class Model:
     def __init__(self, config):
         self.attractor_width = config.ATTRACTOR_WIDTH
         self.number_of_attractors = config.NUMBER_OF_ATTRACTORS
-        self.coordinate_history_limit = config.ATTRACTOR_LENGTH_LIMIT
+        self.coordinate_history_limit = config.COORDINATE_HISTORY_LIMIT
         self.attractors = []
         self.colour_sets = []
         r = random.random

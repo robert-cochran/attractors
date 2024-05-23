@@ -7,7 +7,9 @@ from ode import ODE
 # an attractor is a single 3d point whose behaviour is determined by ode arg
 
 class Attractor:
-    previous = None
+
+    previous_translation = None
+
     def __init__(self, x, y, z, ode_parameters, time_step, ode, history_limit):
         self.ode_parameters = ode_parameters
         self.time_step = time_step

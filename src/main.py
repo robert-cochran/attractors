@@ -29,20 +29,27 @@ if __name__ == "__main__":
         # its cartesian coordinates. Attractors are the set of these points.
         for index, attractor in enumerate(attractors):
             attractor.generate_next_coordinate()
-            for prev_coord_index in range(len(attractor.coord_history)):
-                coords = attractor.get_coord(prev_coord_index)
-                x_pos, y_pos = camera.translate_around_y_axis(coords)
-                if attractor.previous is not None: 
-                    red = model.get_colour_dict(index)["red"]
-                    green = model.get_colour_dict(index)["green"]
-                    blue = model.get_colour_dict(index)["blue"]
-                    x_prev = attractor.previous[0]
-                    y_prev = attractor.previous[1]
-                    view.paint_line(red, green, blue, x_pos, y_pos, x_prev, 
-                                    y_prev, model.get_width())
+            for coord_index in range(len(attractor.coord_history)):
+                coord_matrix = attractor.get_coord(coord_index)
+                x_pos, y_pos = camera.translate_around_y_axis(coord_matrix)
+                #if attractor.previous_translation is None:
+                #    # NOTE: only printed when prev_coord_index == 0
+                #    print("NONE " + str(index) + "  " + str(prev_coord_index))
+                if attractor.previous_translation is not None: 
+                    colour = model.get_colour_dict(index)
+                    x_prev = attractor.previous_translation["x"]
+                    y_prev = attractor.previous_translation["y"]
+                    view.paint_line(colour["red"], 
+                                    colour["green"],
+                                    colour["blue"],
+                                    x_pos, 
+                                    y_pos, 
+                                    x_prev, 
+                                    y_prev, 
+                                    model.get_width())
                 # TODO make this method that sets prev coords (needed?)
                 # TODO rename to previous_coords
-                attractor.previous=[x_pos, y_pos]
+                attractor.previous_translation={ "x": x_pos, "y": y_pos}
         camera.increase_angle(0.005)
         pygame.display.update()
         # ic((attractor.color[0]-1)%255)
