@@ -28,7 +28,10 @@ if __name__ == "__main__":
         # An Attractor in this instance is a single point in space defined by
         # its cartesian coordinates. Attractors are the set of these points.
         for attractor_index, attractor in enumerate(attractors):
-            coord_matrix_prv = attractor.get_current_coord()
+            # TODO - after image/trail effect by painting line of entire coord 
+            # history before screen is wiped next round. as opposed to current 
+            # approach which only paints newest prev coord
+            coord_matrix_prv = attractor.get_current_coord_matrix()
             coord_matrix_cur = attractor.generate_next_coordinate()
             x_prv, y_prv = camera.translate_around_y_axis(coord_matrix_prv)
             x_cur, y_cur = camera.translate_around_y_axis(coord_matrix_cur)

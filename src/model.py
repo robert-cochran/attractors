@@ -62,33 +62,19 @@ if __name__ == "__main__":
         SCALE = 10
         ANGLE = 0 #-100
         ATTRACTOR_LENGTH_LIMIT = 10000 # min 2 (needs prev value to calc)
-        NUMBER_OF_ATTRACTORS = 1
+        NUMBER_OF_ATTRACTORS = 3
         ATTRACTOR_WIDTH = 4
         COLOUR_SCHEME = colour_scheme.Static_White
         DISTANCE = 1
+        COORDINATE_HISTORY_LIMIT = 3
 
 
     model = Model(Test_Conf)
-    attractor0 = model.attractors[0]
-
-    print("-----attractor0 config-----")
-    print("ode_parameter_beta:" + str(attractor0.ode_parameters[0]))
-    print("ode_parameter_rho:" + str(attractor0.ode_parameters[1]))
-    print("ode_parameter_sigma:" + str(attractor0.ode_parameters[2]))
-    print("time_step:" + str(attractor0.time_step))
-    print("ode_name:" + attractor0.ode.__name__)
-    print("colour_sets[0].red:" + str(model.colour_sets[0]["red"]))
-    print("colour_sets[0].green:" + str(model.colour_sets[0]["green"]))
-    print("colour_sets[0].blue:" + str(model.colour_sets[0]["blue"]))
-
-    
-    print("-----attractor0 initial coords-----")
-    print("cartesian_coords:" + str(attractor0.cartesian_coords_matrix))
-    print("cartesian_coords[0][0][0]:" \
-            + str(attractor0.cartesian_coords_matrix[0][0][0]))
-    print("cartesian_coords:" + str(attractor0.cartesian_coords))
-    print("cartesian_coords_x:" + str(attractor0.cartesian_coords["x"]))
-    print("cartesian_coords_y:" + str(attractor0.cartesian_coords["y"]))
-    print("cartesian_coords_z:" + str(attractor0.cartesian_coords["z"]))
-
+    for index in range(Test_Conf.NUMBER_OF_ATTRACTORS):
+        attractor = model.attractors[index]
+        print("-----attractor" + str(index) + " config-----")
+        print(attractor.get_config())
+        print("colour_sets[0].red:" + str(model.colour_sets[index]["red"]))
+        print("colour_sets[0].green:" + str(model.colour_sets[index]["green"]))
+        print("colour_sets[0].blue:" + str(model.colour_sets[index]["blue"]))
 

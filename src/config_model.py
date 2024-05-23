@@ -41,8 +41,8 @@ class Base_Lorrenz():
 
 
 class Many_Rainbow_Lorrenz(Base_Lorrenz):
-    COORDINATE_HISTORY_LIMIT = 3 # min 2
-    NUMBER_OF_ATTRACTORS = 2000
+    COORDINATE_HISTORY_LIMIT = 2 # min 2
+    NUMBER_OF_ATTRACTORS = 4000
     ATTRACTOR_WIDTH = 1
     COLOUR_SCHEME = colour_scheme.Rainbow
 

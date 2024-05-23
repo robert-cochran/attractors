@@ -2,7 +2,6 @@ import math
 from matrix import matrix_multiplication
 
 class Camera(object):
-    previous_translation = None
 
     def __init__(self, config_model, config_view):
         self.angle = config_model.ANGLE
