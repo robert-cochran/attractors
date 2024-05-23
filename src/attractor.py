@@ -1,29 +1,10 @@
-import random
+#import random
 import math
 #import config
 from ode import ODE
 
 # https://en.wikipedia.org/wiki/Attractor
 # an attractor is a single 3d point whose behaviour is determined by ode arg
-def generate_attractors(number_of_attractors, \
-                        ode_parameters, \
-                        time_step, \
-                        ode, \
-                        distance):
-
-    attractors = []
-    for n in range(number_of_attractors):
-        r = random.random
-        d = distance 
-        x, y, z = r()*d, r()*d, r()*d
-        attractor = Attractor(x, 
-                              y, 
-                              z, 
-                              ode_parameters, 
-                              time_step, 
-                              ode)
-        attractors.append(attractor)
-    return attractors
 
 class Attractor:
     previous = None
@@ -48,6 +29,8 @@ class Attractor:
         self.cartesian_coords = { "x": x, "y":y, "z":z }
         return self.cartesian_coords_matrix
 
+    def dequeue_coord_history():
+        coord_history.pop(0)
 
 
 

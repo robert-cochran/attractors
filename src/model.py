@@ -1,5 +1,6 @@
-from attractor import Attractor, ODE, generate_attractors
+from attractor import Attractor, ODE
 import colour_scheme
+import random
 
 # TODO - an after image effect using previous generated points that fade out
 # based on how long theyve been around. would tie opacity to time step. but also
@@ -8,14 +9,21 @@ import colour_scheme
 class Model:
 
     def __init__(self, config):
-        self.conf = config
-        self.attractors = generate_attractors(config.NUMBER_OF_ATTRACTORS, \
-                                              config.ODE_PARAMETERS, \
-                                              config.TIME_STEP, \
-                                              config.ODE, \
-                                              config.DISTANCE)
+        self.number_of_attractors = config.NUMBER_OF_ATTRACTORS
+        self.coordinate_history_limit = config.ATTRACTOR_LENGTH_LIMIT
+        self.attractors = []
         self.colour_sets = []
-        for x in range(config.NUMBER_OF_ATTRACTORS):
+        r = random.random
+        d = config.DISTANCE 
+        for x in range(self.number_of_attractors):
+            x, y, z = r()*d, r()*d, r()*d
+            attractor = Attractor(x, 
+                                  y, 
+                                  z, \
+                                  config.ODE_PARAMETERS, \
+                                  config.TIME_STEP, \
+                                  config.ODE)
+            self.attractors.append(attractor)
             colours = colour_scheme.generate_colour_set(config.COLOUR_SCHEME)
             self.colour_sets.append(colours)
 
@@ -24,6 +32,12 @@ class Model:
         # does this require also updating config set inside self.attractors?
         print("todo")
 
+
+#def generate_attractor(ode_parameters, time_step, ode, distance):
+#    r = random.random
+#    d = distance 
+#    x, y, z = r()*d, r()*d, r()*d
+#    return Attractor(x, y, z, ode_parameters, time_step, ode)
 
 if __name__ == "__main__":
     class Test_Conf:

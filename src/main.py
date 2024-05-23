@@ -20,7 +20,7 @@ view = View(conf_view)
 camera = Camera(conf_model, conf_view)
 run_attractor = True
 #save_screen = view.make_video(screen)  # initiate the video generator
-coord_history_limit = model.conf.ATTRACTOR_LENGTH_LIMIT
+coord_history_limit = model.coordinate_history_limit
 
 if __name__ == "__main__":
     while run_attractor:
@@ -33,14 +33,13 @@ if __name__ == "__main__":
             if len(attractor.cartesian_coords_matrix) == coord_history_limit:
                 # keep no more than coord_history_limit amount of coords 
                 attractor.cartesian_coords_matrix.pop(0)
+                #attractor.cartesian_coords_matrix.pop(0)
             attractor.next()
             # p is x, y, z points?
             for p in range(len(attractor.cartesian_coords_matrix)):
                 coords = attractor.cartesian_coords_matrix[p]
                 x_pos, y_pos = camera.translate_around_y_axis(coords)
-                # if attractor.previous is not None: 
-                # replace p>0 w/above to view closed attractors "self drawing"
-                if p>0:
+                if attractor.previous is not None: 
                     colour = (model.colour_sets[index]["red"], \
                               model.colour_sets[index]["green"], \
                               model.colour_sets[index]["blue"], \
