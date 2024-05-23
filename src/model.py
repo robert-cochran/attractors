@@ -7,9 +7,7 @@ import colour_scheme
 
 class Model:
 
-
     def __init__(self, config):
-        #conf = config_model.Many_Rainbow_Lorrenz
         self.conf = config
         self.attractors = generate_attractors(config.NUMBER_OF_ATTRACTORS, \
                                               config.ODE_PARAMETERS, \
@@ -22,16 +20,10 @@ class Model:
             self.colour_sets.append(colours)
 
     #@classmethod
-    def load_config(self):
+    def load_config(self, config):
+        # does this require also updating config set inside self.attractors?
         print("todo")
 
-    def translate_coords_rotationally():
-        x_pos, y_pos = generate_pos(conf_model.ANGLE, \
-                                    attractor.cartesian_coords_matrix, \
-                                    p, \
-                                    conf_model.SCALE, \
-                                    conf_view.SIZE, \
-                                    conf_view.ROTATION_TYPE)
 
 if __name__ == "__main__":
     class Test_Conf:
