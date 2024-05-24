@@ -6,7 +6,9 @@ class ODE(object):
 
     @staticmethod
     def lorenz(x, y, z, parameters, time_step):
-        beta, rho, sigma = parameters[0], parameters[1], parameters[2] 
+        beta = parameters["beta"]
+        rho = parameters["rho"]
+        sigma = parameters["sigma"] 
         dx = (sigma * (y - x))*time_step
         dy = (x * (rho - z) - y)*time_step
         dz = (x * y - beta * z)*time_step
@@ -15,7 +17,7 @@ class ODE(object):
     @staticmethod
     # https://en.wikipedia.org/wiki/Thomas%27_cyclically_symmetric_attractor
     def tom(x, y, z, parameters, time_step):
-        b = parameters[0]
+        b = parameters["b"]
         dx = (math.sin(y) - b*x)*time_step
         dy = (math.sin(z) - b*y)*time_step
         dz = (math.sin(x) - b*z)*time_step
@@ -25,12 +27,12 @@ class ODE(object):
     # https://www.behance.net/gallery/7618879/Strange-Attractors
     # http://www.3d-meier.de/tut19/Seite3.html
     def aizawa(x, y, z, parameters, time_step):
-        alpha = parameters[0]
-        beta = parameters[1]
-        gamma = parameters[2]
-        delta = parameters[3]
-        epsilon = parameters[4]
-        zeta = parameters[5]
+        alpha = parameters["alpha"]
+        beta = parameters["beta"]
+        gamma = parameters["gamma"]
+        delta = parameters["delta"]
+        epsilon = parameters["epsilon"]
+        zeta = parameters["zeta"]
         
         dx = ( (z-beta)*x - (delta*y) )*time_step
         dy = ( (delta*x) + (zeta-beta)*y )*time_step
@@ -43,8 +45,8 @@ class ODE(object):
     @staticmethod
     # http://www.3d-meier.de/tut19/Seite5.html
     def bouali(x,y,z,parameters,time_step):
-        a = parameters[0]
-        s = parameters[1]
+        a = parameters["alpha"]
+        s = parameters["beta"]
 
         dx = ( x*(4-y) + (a*z) )*time_step
         dy = ( (-1 * y) * (1-(x**2)) )*time_step

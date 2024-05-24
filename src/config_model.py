@@ -18,7 +18,7 @@ class Base_Lorenz():
     BETA = 8/3 #8/3
     RHO = 28 #28
     SIGMA = 10 #10
-    ODE_PARAMETERS = [BETA, RHO, SIGMA]
+    ODE_PARAMETERS = { "beta": BETA, "rho": RHO, "sigma": SIGMA }
     SCALE = 10
     ANGLE = 0 #-100
     COORDINATE_HISTORY_LIMIT = 10000 # min 2 (needs prev value to calc)
@@ -78,7 +78,8 @@ class Base_Tom():
     ANGLE = 0 #-100
     COORDINATE_HISTORY_LIMIT = 20 
     NUMBER_OF_ATTRACTORS = 100
-    ODE_PARAMETERS = [0.1998]
+    B = 0.1998
+    ODE_PARAMETERS = { "b" : B }
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.05
     COLOUR_SCHEME = colour_scheme.Static_White
@@ -112,7 +113,8 @@ class Base_Aizawa():
     DELTA = 3.5
     EPSILON = 0.25
     ZETA = 0.1
-    ODE_PARAMETERS = [ALPHA, BETA, GAMMA, DELTA, EPSILON, ZETA]
+    ODE_PARAMETERS = { "alpha": ALPHA, "beta": BETA, "gamma": GAMMA, \
+                        "delta": DELTA, "epsilon": EPSILON, "zeta": ZETA }
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.001
     COLOUR_SCHEME = colour_scheme.Rainbow
@@ -138,7 +140,8 @@ class Base_Bouali():
     DELTA = 3.5
     EPSILON = 0.25
     ZETA = 0.1
-    ODE_PARAMETERS = [ALPHA, BETA, GAMMA, DELTA, EPSILON, ZETA]
+    ODE_PARAMETERS = { "alpha": ALPHA, "beta": BETA, "gamma": GAMMA, \
+                        "delta": DELTA, "epsilon": EPSILON, "zeta": ZETA }
     ATTRACTOR_WIDTH = 1
     DISTANCE = 0.00005
     COLOUR_SCHEME = colour_scheme.Rainbow
