@@ -57,7 +57,7 @@ class Attractor:
 
 if __name__ == "__main__":
     number_of_attractors = 10
-    lorenz_ode_parameters = [8/3,28,10]
+    lorenz_ode_parameters = { "beta":8/3, "rho": 28, "sigma":10 }
     time_step = 0.1
     ode = ODE.lorenz
     distance = 0.1

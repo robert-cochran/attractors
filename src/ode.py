@@ -76,9 +76,9 @@ if __name__ == "__main__":
     x = 0.5
     y = 0.6
     z = 0.7
-    lorrenz_parameters = [8/3,28,10]
+    lorenz_ode_parameters = { "beta":8/3, "rho": 28, "sigma":10 }
     time_step = 0.1
 
-    print(ODE.lorenz(x,y,z,lorrenz_parameters,time_step))
+    print(ODE.lorenz(x,y,z,lorenz_ode_parameters,time_step))
     print(ODE.tinkerbell(x,y,z,time_step))
 

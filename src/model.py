@@ -58,7 +58,7 @@ if __name__ == "__main__":
         BETA = 8/3 #8/3
         RHO = 28 #28
         SIGMA = 10 #10
-        ODE_PARAMETERS = [BETA, RHO, SIGMA]
+        ODE_PARAMETERS = { "beta": BETA, "rho": RHO, "sigma": SIGMA }
         SCALE = 10
         ANGLE = 0 #-100
         ATTRACTOR_LENGTH_LIMIT = 10000 # min 2 (needs prev value to calc)
