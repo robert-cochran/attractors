@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="lib/brython.min.js"> </script>
+    <script type="text/javascript" src="lib/brython_stdlib.js"> </script>
+    <script type="text/python" id="module" src="src/brython_module.py"></script>
+
+</head>
+
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+    <script type="text/python">
+
+        from browser import document
+        import module
+
+        lorenz_model = module.lorenz()
+        attractor0coords = lorenz_model.get_attractor_coords(0)
+        print(str(attractor0coords))
+
+        coords = lorenz_model.get_all_attractors_coords()
+        print(str(coords))
+
+        document.body <= "LORENZ_0_COORDS: \n\n\n"
+        document.body <= str(attractor0coords)
+
+    </script>
+
 
 </body>
+
 </html>
