@@ -35,6 +35,12 @@ class Attractor:
     def dequeue_coord_history(self):
         self.coord_history.pop(0)
 
+    def get_prev_coord_matrix(self):
+        print("TODO")
+
+    def get_prev_coord_dict(self):
+        print("TODO")
+
     def get_current_coord_matrix(self):
         x = self.cartesian_coords["x"]
         y = self.cartesian_coords["y"]
@@ -56,26 +62,27 @@ class Attractor:
                  "time_step: ": str(self.time_step) }
 
 if __name__ == "__main__":
-    number_of_attractors = 10
-    lorenz_ode_parameters = { "beta":8/3, "rho": 28, "sigma":10 }
-    time_step = 0.1
-    ode = ODE.lorenz
-    distance = 0.1
+    #number_of_attractors = 10
+    #lorenz_ode_parameters = { "beta":8/3, "rho": 28, "sigma":10 }
+    #time_step = 0.1
+    #ode = ODE.lorenz
+    #distance = 0.1
 
-    # A point in this instance is a single attractor that follows the path
-    # defined by the ODE.
-    x = random.random()*distance
-    y = random.random()*distance
-    z = random.random()*distance
-    attractor = Attractor(x, y, z, lorenz_ode_parameters, time_step, ode, 3) 
+    ## A point in this instance is a single attractor that follows the path
+    ## defined by the ODE.
+    #x = random.random()*distance
+    #y = random.random()*distance
+    #z = random.random()*distance
+    #attractor = Attractor(x, y, z, lorenz_ode_parameters, time_step, ode, 3) 
 
-    print(attractor.get_config())
-    
-    print("-----initial coords-----")
-    print("cartesian_coords:" + str(attractor.get_current_coord_dict()))
+    #print(attractor.get_config())
+    #
+    #print("-----initial coords-----")
+    #print("cartesian_coords:" + str(attractor.get_current_coord_dict()))
 
-    attractor.generate_next_coordinate()
+    #attractor.generate_next_coordinate()
 
-    print("-----next coords-----")
-    print("cartesian_coords:" + str(attractor.get_current_coord_dict()))
+    #print("-----next coords-----")
+    #print("cartesian_coords:" + str(attractor.get_current_coord_dict()))
+    print("ATTRACTOR MAIN!")
 

@@ -9,6 +9,7 @@ import random
 class Model:
 
     def __init__(self, config):
+        self.config = config
         self.attractor_width = config.ATTRACTOR_WIDTH
         self.number_of_attractors = config.NUMBER_OF_ATTRACTORS
         self.coordinate_history_limit = config.COORDINATE_HISTORY_LIMIT
@@ -34,6 +35,36 @@ class Model:
         # does this require also updating config set inside self.attractors?
         print("todo")
 
+    def get_config(self):
+        return self.config
+
+    def get_number_of_attractors(self):
+        return self.number_of_attractors
+
+    def get_attractor(self, i):
+        return self.attractors[i]
+
+    def get_attractor_coords(self, i):
+        return self.attractors[i].get_current_coord_dict()
+    
+    def get_all_attractors_coords(self):
+        coords = []
+        for attractor in self.attractors:
+            coords.append(attractor.get_current_coord_dict())
+        return coords
+
+    def generate_random_coordainte(self):
+        print("TODO")
+
+    def generate_next_coordinates(self):
+        next_coords = []
+        for attractor in self.attractors:
+            attractor.generate_next_coordinate()
+            next_coords.append(attractor.get_current_coord_dict())
+        return next_coords
+
+
+        # return array of new coord dicts
 
     def get_colour_set(self, index):
         colour_set = self.colour_sets[index]
