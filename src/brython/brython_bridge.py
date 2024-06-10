@@ -7,7 +7,6 @@ def lorenz():
     return model
 
 
-
 if __name__ == "__main__":
     lorenz_model = lorenz()
 
