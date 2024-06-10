@@ -1,5 +1,13 @@
 TODO
 
+- WASM 
+    - -> 33MB compiled
+    - nuikta (python -> C)
+    - brython (python -> js)
+    - py2wasm (python -> wasm)
+    - pyodide (cpython -> wasm)
+- import wasm into index.html
+
 - make attractor determinstic that takes a set of points and generates new
   points. 
 - make attractor its own module that can be compiled into its own wasm.
@@ -8,14 +16,8 @@ TODO
   (model/view) into another wasm (controller)?
 - have python3 take in attractorName for bash arg, no args sets default attractor
 - remove /notes/
-- WASM -> 33MB compiled
-- import wasm into index.html
 
-- Have a bunch of configs i can quickly enter in and cycle through
-    -  Check how to make rotation.y rotate in place instead of in a large circle 
--  Add in changing colours
--  Add in options to add circles drawn
-    - maybe add circles only at beginning of line?
+- Add in changing colours
 - Allow for specified number of central points 
     - atm its just one where all atr's emerge, allow for more
 - Option for selfdrawing 
