@@ -18,7 +18,8 @@ For more info and examples see:
 # uses 'venv' module to create a venv in the venv dir. pip's also copied in.
 python3 -m venv venv
 
-# activates virtual environment by editing PATH to first look in venv/bin/
+# activates virtual environment by editing PATH to use venv/bin/ when pip
+# installing and running modules
 # pip now installs modules to local repo under venv/lib/python3.x/site-packages/
 source venv/bin/activate
 
