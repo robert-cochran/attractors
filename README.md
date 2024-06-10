@@ -38,6 +38,7 @@ NOTE: for auto-managed venv use pipx (installable through brew)
 
 ## Docs
 [wasmer](./docs/wasmer.md)
+[brython](./docs/brython.md)
 
 ##### Related Repo's
 - https://github.com/BrutPitt/glChAoS.P
